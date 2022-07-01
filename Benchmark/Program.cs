@@ -18,6 +18,30 @@ namespace Benchmark
     }
 
     [MemoryDiagnoser]
+    public class ConcurrentSemaphore
+    {
+        private IEnumerable<int> _src;
+
+        [GlobalSetup]
+        public void Setup()
+        {
+            _src = Enumerable.Range(1, 1_000_000);
+        }
+
+        [Benchmark]
+        public long NoSynchronize() => InterlockedAddDemo.NoSynchronize(_src);
+
+        [Benchmark]
+        public long Interlocked() => InterlockedAddDemo.InterlockedAdd(_src);
+
+        [Benchmark]
+        public long SemaphoreSlim8WaitAsync() => InterlockedAddDemo.WithSemaphoreSlim8WaitAsync(_src);
+
+        [Benchmark]
+        public long SemaphoreSlimWaitAsync() => InterlockedAddDemo.WithSemaphoreSlimWaitAsync(_src);
+    }
+
+    [MemoryDiagnoser]
     public class InterlockedAdd
     {
         private IEnumerable<int> _src;
