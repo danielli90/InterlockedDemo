@@ -1,4 +1,4 @@
-Note: ConcurrentSemaphore is added. The benchmark result of ConcurrentSemaphore is detailed in [ConcurrentSemaphore Result](concurrentsemaphore_result.md)
+Note: ConcurrentSemaphore is added. The benchmark result of ConcurrentSemaphore is detailed in [ConcurrentSemaphore Result](./ConcurrentSemaphore_Result.md)
 
 This is the sample code for my article about synchronization with Interlocked in C#. You can find it at the following link.
 
