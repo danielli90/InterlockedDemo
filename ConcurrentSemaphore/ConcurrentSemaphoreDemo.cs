@@ -9,7 +9,7 @@ namespace ConcurrentSemaphore
 {
     public class ConcurrentSemaphoreDemo
     {
-        private static ParallelOptions _options =  new ParallelOptions { MaxDegreeOfParallelism = 12 }; 
+        private static ParallelOptions _options =  new ParallelOptions { MaxDegreeOfParallelism = 10 };
 
         static void Main(string[] args)
         {
