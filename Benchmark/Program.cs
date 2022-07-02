@@ -1,5 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
+using ConcurrentSemaphore;
 using InterlockedAdd;
 using InterlockedExchange;
 using InterlockedIncrement;
@@ -15,6 +16,30 @@ namespace Benchmark
         {
             BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).Run(args);
         }
+    }
+
+    [MemoryDiagnoser]
+    public class ConcurrentSemaphore
+    {
+        private IEnumerable<int> _src;
+
+        [GlobalSetup]
+        public void Setup()
+        {
+            _src = Enumerable.Range(1, 1_000_000);
+        }
+
+        [Benchmark]
+        public long NoSynchronize() => ConcurrentSemaphoreDemo.NoSynchronize(_src);
+
+        [Benchmark]
+        public long Interlocked() => ConcurrentSemaphoreDemo.InterlockedAdd(_src);
+
+        [Benchmark]
+        public long SemaphoreSlim8WaitAsync() => ConcurrentSemaphoreDemo.WithSemaphoreSlim8WaitAsync(_src);
+
+        [Benchmark]
+        public long SemaphoreSlimWaitAsync() => ConcurrentSemaphoreDemo.WithSemaphoreSlimWaitAsync(_src);
     }
 
     [MemoryDiagnoser]
