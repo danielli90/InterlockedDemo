@@ -2,7 +2,8 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <!--<TargetFramework>netcoreapp3.1</TargetFramework>-->
+    <TargetFramework>net472</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,6 +14,7 @@
     <ProjectReference Include="..\InterlockedAdd\InterlockedAdd.csproj" />
     <ProjectReference Include="..\InterlockedExchange\InterlockedExchange.csproj" />
     <ProjectReference Include="..\InterlockedIncrement\InterlockedIncrement.csproj" />
+    <ProjectReference Include="..\ConcurrentSemaphore\ConcurrentSemaphore.csproj" />
   </ItemGroup>	
 
 </Project>
