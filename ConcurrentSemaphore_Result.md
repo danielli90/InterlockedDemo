@@ -17,5 +17,7 @@ Intel Xeon CPU E5-2673 v4 2.30GHz, 1 CPU, 16 logical and 16 physical cores
 | SemaphoreSlim8WaitAsync |   101.10 ms |  0.641 ms |  0.568 ms |          - |         - |     - |    157 KB |
 |  SemaphoreSlimWaitAsync | 1,040.63 ms | 16.013 ms | 14.195 ms | 11000.0000 | 1000.0000 |     - | 89,811 KB |
 ```
+
+Detailed benchmark log is [here](./Benchmark.ConcurrentSemaphore.log)
 # Discussion
 Max concurrency is capped at 10 threads. SemaphoeSlim8WaitAsync uses a Semaphoore(8,8) to allow up to 8 threads to concurrently add the sum via InterlockedAdd. SemaphoreSlimWaitAsync uses the exclusive Semaphore(1,1). Increasing max concurrency of the Semaphore to 8 produced **9 times faster** results. 
